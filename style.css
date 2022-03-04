@@ -7,4 +7,151 @@
  * License: MIT License
  * License URI: https://github.com/AHDiniz/Tornus-WP-Theme/blob/master/LICENSE
  * Theme URI: https://github.com/AHDiniz/Tornus-WP-Theme
- */
+*/
+
+:root
+{
+    --es-pink: #F68AAC;
+    --es-blue: #0072BF;
+    --es-light-blue: #0072BF30;
+}
+
+.btn.can-click:hover
+{
+    box-shadow: 5px 5px #88888830;
+}
+
+.header
+{
+    width: 100%;
+    border-bottom: 8px solid #f68aac !important;
+}
+
+.es-pink
+{
+    color: var(--es-pink);
+}
+
+.es-blue
+{
+    color: var(--es-blue);
+}
+
+.es-pink-bg
+{
+    background-color: var(--es-pink);
+}
+
+.es-blue-bg
+{
+    background-color: var(--es-blue);
+}
+
+.es-light-blue-bg
+{
+    background-color: var(--es-light-blue);
+}
+
+.content-border-top
+{
+    border-top: 8px solid #f68aac !important;
+}
+
+.navbar-logo
+{
+    position: relative;
+    width: 170px;
+    left: 15px;
+    background-size: contain;
+}
+
+.main-page-carousel-item
+{
+    height: 30rem;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.carousel-item-image
+{
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    transform: translateY(-40%);
+}
+
+.activity-main-page-icon
+{
+    height: 17rem;
+    width: 17rem;
+    object-fit: cover;
+}
+
+.activity-profile-icon
+{
+    height: 14rem;
+    width: 14rem;
+    object-fit: cover;
+}
+
+.request-card
+{
+    border: 8px solid #f68aac !important;
+}
+
+.current-page
+{
+    background-color: #F68AAC;
+    margin: 2px;
+    margin-right: 5px;
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.not-done-page
+{
+    background-color: grey;
+    margin: 2px;
+    margin-right: 5px;
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.done-page
+{
+    background-color: #0072BF;
+    margin: 2px;
+    margin-right: 5px;
+    border-radius: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.activity-page-card-img
+{
+    max-height: 23rem;
+    object-fit: cover;
+}
+
+.carousel-activity-image
+{
+    object-fit: contain;
+}
+
+.progress
+{
+    background-color: #0072BF;
+    border-radius: 13rem;
+    height: 2rem;
+    padding: 3px;
+}
+
+.progress > div
+{
+    background-color: #F68AAC;
+    height: 100%;
+    border-radius: 26px;
+}
