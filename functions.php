@@ -10,8 +10,8 @@ function TornusRegisterStyles()
 function TornusRegisterScripts()
 {
     $version = wp_get_theme()->get("Version");
-    wp_enqueue_style("tornus-bootstrap-js", get_template_directory_uri() . "/assets/js/bootstrap/bootstrap.min.js", array(), "5.1.3", true);
-    wp_enqueue_style("tornus-js", get_template_directory_uri() . "assets/js/main.js", array("tornus-bootstrap-js"), $version, true);
+    wp_enqueue_script("tornus-bootstrap-js", get_template_directory_uri() . "/assets/js/bootstrap/bootstrap.min.js", array(), "5.1.3", false);
+    wp_enqueue_script("tornus-main-js", get_template_directory_uri() . "/assets/js/main.js", array("tornus-bootstrap-js"), $version, false);
 }
 
 function TornusRegisterMenuLocations()
