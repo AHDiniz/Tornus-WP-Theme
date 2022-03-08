@@ -30,6 +30,7 @@ function TornusRegisterMenuLocations()
 function TornusThemeSupports()
 {
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
 }
 
 add_action('init', 'TornusRegisterMenuLocations');

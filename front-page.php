@@ -30,5 +30,7 @@ if (have_posts())
     }
 }
 
+TornusMainPageGallery();
+
 get_footer();
 ?>
