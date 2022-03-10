@@ -23,7 +23,5 @@
     wp_footer();
 ?>
 
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyATtKbkRvo2KzNE8xef1V3H1R47VnCd4&callback=initMap&libraries=&v=weekly">
-
 </body>
 </html>
