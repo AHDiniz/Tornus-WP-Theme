@@ -71,14 +71,15 @@
     position: relative;
     background-position: center;
     background-size: cover;
+    overflow: hidden;
 }
 
 .carousel-item-image
 {
-    position: relative;
+    position: absolute;
     background-position: center;
     background-size: cover;
-    transform: translateY(-40%);
+    object-fit: cover;
 }
 
 .activity-main-page-icon
@@ -154,4 +155,10 @@
     background-color: #F68AAC;
     height: 100%;
     border-radius: 26px;
+}
+
+.google-map
+{
+    height: 400px;
+    width: 100%;
 }
