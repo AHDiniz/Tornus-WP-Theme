@@ -90,17 +90,99 @@ for ($i = 0; $i < count($posts); $i++)
     </div>
 </div>
 
-<div class="container-fluid m-5 d-flex justify-content-center">
+<div class="container mt-5">
     <div class="row">
-        <div class="col-12">
+        <div class="col">
             <p>Já conhece o <strong>Mapa da Tornus</strong>? Aqui você encontra diversos pontos incriveis para conhecer na sua viagem, basta selecionar no mapa o que procura ou então pesquisar na barra de busca. Aproveite!</p>
         </div>
     </div>
+    <form method="post" action="search.php" class="row mb-2 align-items-center">
+        <div class="input-group">
+            <div class="col-sm-6">
+                <input type="text" name="name" id="front-place-name" class="form-control" placeholder="Local">
+            </div>
+            <div class="col-sm-5">
+                <input type="text" name="tag" id="front-place-tag" class="form-control" placeholder="Tags">
+            </div>
+            <div class="col-sm-1">
+                <button type="submit" class="btn can-click es-pink-bg text-white">Pesquisar</button>
+            </div>
+        </div>
+    </form>
     <div class="row">
-        <div class="col-6">
-            <div class="google-map"></div>
+        <div class="col">
+            <!-- <div id="tornus-map"></div> -->
+            <iframe src="https://api.mapbox.com/styles/v1/alanhdiniz/cl0mdpb1j002415o41oog7r1e.html?title=false&access_token=<?php echo get_option('mapbox_key'); ?>&zoomwheel=false#6/-19.7/-40.35" title="Basic" class="tornus-map"></iframe>
+        </div>
+        <div class="card col es-pink-bg">
+            <div class="card-body">
+                <div class="row">
+                    <h2 class="text-white">PRAIAS</h2>
+                    <ul>
+                    <?php
+                    $beach_posts = query_posts(
+                        array(
+                            'numberposts' => 4,
+                            'post_type' => 'tour_point',
+                            'status' => 'publish',
+                            'post_tag' => 'praia',
+                            'orderby' => 'date'
+                        )
+                    );
+
+                    for ($i = 0; $i < count($beach_posts); $i++)
+                    {
+                        $beach = $beach_posts[$i];
+
+                        $title = get_the_title($beach);
+                        $link = get_permalink($beach);
+
+                        ?>
+                        <li class="text-white"><a href="<?php echo $link; ?>"><?php echo $title; ?></a>
+                        <?php
+                    }
+                    ?>
+                    </ul>
+                </div>
+                <div class="row">
+                <h2 class="text-white">PARQUES</h2>
+                    <ul>
+                    <?php
+                    $beach_posts = query_posts(
+                        array(
+                            'numberposts' => 4,
+                            'post_type' => 'tour_point',
+                            'status' => 'publish',
+                            'post_tag' => 'parque',
+                            'orderby' => 'date'
+                        )
+                    );
+
+                    for ($i = 0; $i < count($beach_posts); $i++)
+                    {
+                        $beach = $beach_posts[$i];
+
+                        $title = get_the_title($beach);
+                        $link = get_permalink($beach);
+
+                        ?>
+                        <li class="text-white"><a href="<?php echo $link; ?>"><?php echo $title; ?></a>
+                        <?php
+                    }
+                    ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container mt-5">
+
+</div>
+
+<div class="container mt-5 mb-5">
+    
 </div>
 
 <?php

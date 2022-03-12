@@ -5,8 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
+    $mapbox_key = get_option('mapbox_key');
+    ?>
+    
+    <?php
     wp_head();
     ?>
+    <script type="text/javascript">
+        mapboxgl.accessToken = "<?php echo $mapbox_key; ?>";
+    </script>
+    
 </head>
 <body>
     <div class="container-fluid header">
