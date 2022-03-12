@@ -2,44 +2,54 @@
 
 get_header();
 
-$posts = null;
+global $query_string;
+$query_args = explode("&", $query_string);
+$search_query = array();
 
-if ($_POST)
+foreach ($query_args as $key => $string)
 {
-    $post_name = $_POST['name'];
-    $post_tag = $_POST['tag'];
-    $post_type = $_POST['type'];
+    $query_split = explode("=", $string);
+    $search_query[$query_split[0]] = urldecode($query_split[1]);
+}
 
-    $posts = query_posts(array(
-        'post_type' => "{$post_type}",
-        'post_title' => "{$post_title}",
-        'post_tag' => "{$post_tag}" 
-    ));
-}
-else
-{
-    $posts = query_posts(array(
-        'post_type' => array('tour_point', 'tour_experience', 'event', 'group_activity')
-    ));
-}
+$posts = query_posts($search_query);
 
 ?>
 
 <div class="container mt-5">
     <div class="row">
-        <form method="post" action="search.php">
-            <div class="input-group">
-                <div class="col-sm-6">
-                    <input type="text" name="name" id="front-place-name" class="form-control" placeholder="Local">
-                </div>
-                <div class="col-sm-5">
-                    <input type="text" name="tag" id="front-place-tag" class="form-control" placeholder="Tags">
-                </div>
-                <div class="col-sm-1">
-                    <button type="submit" class="btn can-click es-pink-bg text-white">Pesquisar</button>
-                </div>
+        <div class="col">
+            <?php get_search_form(); ?>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+    <?php
+    
+    for ($i = 0; $i < count($posts); $i++)
+    {
+        $post = $posts[$i];
+
+        $img = get_the_post_thumbnail_url($post);
+        $title = get_the_title($post);
+        $excerpt = get_the_excerpt($post);
+        $link = get_permalink($post);
+
+        ?>
+        <div class="col-sm-12 col-md-6 card search-page-card mt-2">
+            <img src="<?php echo $img; ?>" class="card-img-top search-card-img">
+            <div class="card-body">
+                <a href="<?php echo $link; ?>"><h5><?php echo $title; ?></h5></a>
+                <p><?php echo $excerpt; ?></p>
             </div>
-        </form>
+        </div>
+        <?php
+
+    }
+    
+    ?>
     </div>
 </div>
 

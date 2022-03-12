@@ -72,6 +72,19 @@ function TornusMapboxAPIKeyInput()
     <?php
 }
 
+function TornusSearchForm($form)
+{
+    $action = home_url('/');
+    $value = get_search_query();
+    return "<form action=\"{$action}\" class=\"searchform\" id=\"searchform\" method=\"get\" role=\"search\">
+        <div class=\"input-group\">
+            <input type=\"text\" name=\"s\" id=\"s\" value=\"{$value}\" class=\"form-control\">
+            <button type=\"submit\" class=\"btn es-pink-bg can-click text-white\">Pesquisar</button>
+        </div>
+    </form>";
+}
+
+add_action('get_search_form', 'TornusSearchForm');
 add_action('admin_init', 'TornusThemeSettingsSections');
 add_action('admin_menu', 'TornusThemeSettingsHook');
 add_action('init', 'TornusRegisterMenuLocations');

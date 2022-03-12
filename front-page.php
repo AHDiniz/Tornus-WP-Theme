@@ -96,26 +96,18 @@ for ($i = 0; $i < count($posts); $i++)
             <p>Já conhece o <strong>Mapa da Tornus</strong>? Aqui você encontra diversos pontos incriveis para conhecer na sua viagem, basta selecionar no mapa o que procura ou então pesquisar na barra de busca. Aproveite!</p>
         </div>
     </div>
-    <form method="post" action="search.php" class="row mb-2 align-items-center">
-        <div class="input-group">
-            <div class="col-sm-6">
-                <input type="text" name="name" id="front-place-name" class="form-control" placeholder="Local">
-            </div>
-            <div class="col-sm-5">
-                <input type="text" name="tag" id="front-place-tag" class="form-control" placeholder="Tags">
-            </div>
-            <div class="col-sm-1">
-                <button type="submit" class="btn can-click es-pink-bg text-white">Pesquisar</button>
-            </div>
+    <div class="row mb-2">
+        <div class="col">
+            <?php get_search_form(); ?>
         </div>
-    </form>
+    </div>
     <div class="row">
         <div class="col">
             <!-- <div id="tornus-map"></div> -->
             <iframe src="https://api.mapbox.com/styles/v1/alanhdiniz/cl0mdpb1j002415o41oog7r1e.html?title=false&access_token=<?php echo get_option('mapbox_key'); ?>&zoomwheel=false#6/-19.7/-40.35" title="Basic" class="tornus-map"></iframe>
         </div>
-        <div class="card col es-pink-bg">
-            <div class="card-body">
+        <div class="card col front-page-card">
+            <div class="card-body front-page-card-body">
                 <div class="row">
                     <h2 class="text-white">PRAIAS</h2>
                     <ul>
