@@ -18,6 +18,11 @@ function TornusRegisterScripts()
     wp_enqueue_script("tornus-main", get_template_directory_uri() . "/assets/js/main.js", array("bootstrap-scripts", 'mapbox', 'mapbox-directions'), $version, true);
 }
 
+function TornusRegisterBlockScripts()
+{
+    wp_enqueue_script('mapbox-block', get_template_directory_uri() . '/assets/js/map_block.js', array(), '0.0.0', false);
+}
+
 function TornusRegisterMenuLocations()
 {
     register_nav_menus(
@@ -84,6 +89,7 @@ function TornusSearchForm($form)
     </form>";
 }
 
+add_action('enqueue_block_editor_assets', 'TornusRegisterBlockScripts');
 add_action('get_search_form', 'TornusSearchForm');
 add_action('admin_init', 'TornusThemeSettingsSections');
 add_action('admin_menu', 'TornusThemeSettingsHook');
