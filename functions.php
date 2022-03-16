@@ -4,23 +4,25 @@ function TornusRegisterStyles()
 {
     $version = wp_get_theme()->get("Version");
     wp_enqueue_style("bootstrap", get_template_directory_uri() . "/assets/css/bootstrap/bootstrap.min.css", array(), "5.1.3");
-    wp_enqueue_style("mapbox-style", 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css', array(), '1.12');
+    wp_enqueue_style("mapbox-style", 'https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css', array(), '2.3.1');
     wp_enqueue_style("mapbox-directions-style", 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css', array('mapbox-style'), '4.1');
-    wp_enqueue_style("tornus-style", get_template_directory_uri() . "/style.css", array("bootstrap", 'mapbox-style', 'mapbox-directions-style'), $version);
+    wp_enqueue_style("mapbox-geocoder-style", "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css", array("mapbox-style"), "4.7");
+    wp_enqueue_style("tornus-style", get_template_directory_uri() . "/style.css", array("bootstrap", 'mapbox-style', 'mapbox-directions-style', 'mapbox-geocoder-style'), $version);
 }
 
 function TornusRegisterScripts()
 {
     $version = wp_get_theme()->get("Version");
     wp_enqueue_script("bootstrap-scripts", get_template_directory_uri() . "/assets/js/bootstrap/bootstrap.min.js", array(), "5.1.3", false);
-    wp_enqueue_script("mapbox", "https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js", array(), '1.12', false);
+    wp_enqueue_script("mapbox", "https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js", array(), '2.3.1', false);
     wp_enqueue_script("mapbox-directions", 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js', array('mapbox'), '4.1', false);
+    wp_enqueue_script("mapbox-geocoder", "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js", array("mapbox"), "4.7", false);
     wp_enqueue_script("tornus-main", get_template_directory_uri() . "/assets/js/main.js", array("bootstrap-scripts", 'mapbox', 'mapbox-directions'), $version, true);
 }
 
 function TornusRegisterBlockScripts()
 {
-    wp_enqueue_script('mapbox-block', get_template_directory_uri() . '/assets/js/map_block.js', array(), '0.0.0', false);
+    wp_enqueue_script('mapbox-block', get_template_directory_uri() . '/assets/js/map_block.js', array(), '0.0.0', true);
 }
 
 function TornusRegisterMenuLocations()

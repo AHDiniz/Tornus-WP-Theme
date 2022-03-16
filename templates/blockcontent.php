@@ -1,6 +1,6 @@
 <?php
 
-function TornusMainPageGallery($galleryBlock)
+function TornusGallery($galleryBlock)
 {
 
     $carousel_id = "carousel-" . random_int(0, 999999);
@@ -59,6 +59,20 @@ function TornusParagraph($paragraphBlock)
 
             ?>
             </div>
+        </div>
+    </div>
+    <?php
+}
+
+function TornusMapBlock($block)
+{
+    $addressStr = strip_tags($block['innerHTML']);
+    
+
+    ?>
+    <div class="container mt-3 mb-2">
+        <div class="row">
+            <div id="tornus-map" class="tornus-map"></div>
         </div>
     </div>
     <?php

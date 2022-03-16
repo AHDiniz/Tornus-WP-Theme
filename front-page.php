@@ -103,8 +103,7 @@ for ($i = 0; $i < count($posts); $i++)
     </div>
     <div class="row">
         <div class="col">
-            <!-- <div id="tornus-map"></div> -->
-            <iframe src="https://api.mapbox.com/styles/v1/alanhdiniz/cl0mdpb1j002415o41oog7r1e.html?title=false&access_token=<?php echo get_option('mapbox_key'); ?>&zoomwheel=false#6/-19.7/-40.35" title="Basic" class="tornus-map"></iframe>
+            <div id="tornus-map" class="tornus-map"></div>
         </div>
         <div class="card col front-page-card">
             <div class="card-body front-page-card-body">

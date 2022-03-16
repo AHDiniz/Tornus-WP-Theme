@@ -7,7 +7,6 @@
     <?php
     $mapbox_key = get_option('mapbox_key');
     ?>
-    
     <?php
     wp_head();
     ?>
