@@ -23,6 +23,7 @@ function TornusRegisterScripts()
 function TornusRegisterBlockScripts()
 {
     wp_enqueue_script('mapbox-block', get_template_directory_uri() . '/assets/js/map_block.js', array(), '0.0.0', true);
+    wp_enqueue_script('duration-block', get_template_directory_uri() . '/assets/js/duration_block.js', array(), '0.0.0', true);
 }
 
 function TornusRegisterMenuLocations()

@@ -38,6 +38,10 @@ if (have_posts())
                     TornusMapBlock($block);
                     break;
                 
+                case 'tornus/duration':
+                    TornusDuration($block);
+                    break;
+                
                 default:
                     echo $block['innerHTML'];
                     break;
