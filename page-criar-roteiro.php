@@ -2,84 +2,58 @@
 
 get_header();
 
-$posts = query_posts(array(
-    'post_type' => array('tour_route')
-));
-
-global $query_string;
-$query_args = explode("&", $query_string);
-$search_query = array();
-
-foreach ($query_args as $key => $string)
-{
-    $query_split = explode("=", $string);
-    $search_query[$query_split[0]] = urldecode($query_split[1]);
-}
-
-if ($search_query['new_post'] && $search_query['new_post'] == 'create')
-{
 ?>
 
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col">
-            <h1 class="es-blue text-center">Criar Roteiro de Viagem</h1>
-            <p class="text-center">Aqui você pode criar um roteiro de viagens pesquisando por atividades que lhe interessam e adicionando-as no roteiro.</p>
+            <h1 class="es-pink text-center">Criar Roteiro de Viagens</h1>
+            <p class="text-center">Dê o nome para seu novo roteiro de viagens para que você possa editá-lo depois.</p>
         </div>
     </div>
-</div>
-
-<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col">
-            <form action="" method="get">
-                <input type="text" name="route-name" id="route-name" placeholder="Nome da Rota">
-            </form>
-        </div>
-    </div>
-</div>
-
-<?php
-}
-else
-{
-?>
-
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col">
-            <h1 class="es-blue text-center">Seus Roteiros de Viagem</h1>
-            <p class="text-center">Aqui você pode criar ou editar um roteiro de viagens pesquisando por atividades que lhe interessam e adicionando-as no roteiro.</p>
-        </div>
-    </div>
-</div>
-
-<div class="container mb-5">
-    <div class="row">
-        <?php
-        foreach ($posts as $post)
-        {
-            $title = get_the_title($post);
-            $id = get_the_ID($post);
-
-            ?>
-            <div class="col-sm-12 col-md-6">
-                <a href="<?php echo home_url('/criar-roteiro'); ?>?post_id=<?php echo $id; ?>"><?php echo $title; ?></a>
+            <div class="card mt-5 mb-5">
+                <div class="card-body">
+                    <form action="<?php echo home_url("/editar-roteiro/");?>" method="get" class="row">
+                        <div class="col-12 mt-4">
+                            <label for="route-name">Nome do Roteiro</label>
+                            <input type="text" name="route-name" id="route-name" class="form-control" placeholder="Nome do Roteiro">
+                        </div>
+                        <div class="col-6 mt-1">
+                            <label for="route-begin">Local de Início do Roteiro</label>
+                            <input type="text" name="route-begin" id=
+                            "route-begin" class="form-control" placeholder="Início do Roteiro">
+                            <label for="route-end">Local Final do Roteiro</label>
+                            <input type="text" name="route-end" id="route-end" class="form-control" placeholder="Final do Roteiro">
+                        </div>
+                        <div class="col-6 mt-1">
+                            <label for="route-begin-date">Data de Início do Roteiro</label>
+                            <input type="date" name="route-begin-date" id="route-begin-date" class="form-control" placeholder="Data de Início do Roteiro">
+                            <label for="route-end-date">Data Final do Roteiro</label>
+                            <input type="date" name="route-end-date" id="route-end-date" class="form-control" placeholder="Data Final do Roteiro">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <label for="check-point">Ponto Turístico</label>
+                            <input type="checkbox" name="check-point" id="check-point" value="check">
+                            <label for="check-experience">Experiência Turística</label>
+                            <input type="checkbox" name="check-experience" id="check-experience" value="check">
+                            <label for="check-group">Atividade em Grupo</label>
+                            <input type="checkbox" name="check-group" id="check-group" value="check">
+                            <label for="check-event">Evento</label>
+                            <input type="checkbox" name="check-event" id="check-event" value="check">
+                        </div>
+                        <div class="col d-flex justify-content-center mt-3 mb-4">
+                            <button type="submit" class="btn es-pink-bg text-white can-click">Criar Roteiro</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <?php
-        }
-        ?>
-        <div class="col-sm-12 col-md-6">
-            <form action="<?php echo home_url('/criar-roteiro'); ?>" method="get" class="justify-content-center">
-                <input type="radio" value="create" name="new_post" checked hidden>
-                <button type="submit" class="btn es-pink-bg text-white can-click rounded-pill">Criar Novo Roteiro</button>
-            </form>
         </div>
     </div>
 </div>
 
 <?php
-}
 
 get_footer();
 
