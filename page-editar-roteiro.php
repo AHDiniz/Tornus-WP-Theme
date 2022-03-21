@@ -25,11 +25,11 @@ if ($search_query['operation'] != null)
         $activity_id = intval($search_query['activity-id']);
         TornusAddActivityToRoute($route_id, $activity_id);
     }
-    else if ($search_query['operation'] == 'remove')
+    else if ($search_query['operation'] == 'delete')
     {
         $route_id = intval($search_query['route-id']);
         $activity_id = intval($search_query['activity-id']);
-        TornusDeleteActivityToRoute($route_id, $activity_id);
+        TornusDeleteActivityFromRoute($route_id, $activity_id);
     }
 }
 
@@ -88,7 +88,7 @@ if ($post == null)
 
             ?>
             
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 mt-2">
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <a href="<?php echo home_url('/editar-roteiro/');?>?post-id=<?php echo $id; ?>" class="btn es-pink-bg text-white can-click rounded-pill"><?php echo $title; ?></a>
@@ -123,21 +123,9 @@ else
     ));
     
     $args = array();
-    $args['post_type'] = array();
+    $args['post_type'] = array('event', 'tour_point', 'group_activity', 'tour_experience');
     $args['numberposts'] = 42;
-    
-    if ($add_events == 'check')
-        array_push($args['post_type'], 'event');
-        
-    if ($add_points == 'check')
-        array_push($args['post_type'], 'tour_point');
-        
-    if ($add_groups == 'check')
-        array_push($args['post_type'], 'group_activity');
-        
-    if ($add_experience == 'check')
-        array_push($args['post_type'], 'tour_experience');
-        
+
     $activities = query_posts($args);
 ?>
 
@@ -160,7 +148,7 @@ else
         foreach ($route_activities as $activity)
         {
             ?>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 mt-2">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="text-center">
@@ -194,7 +182,7 @@ else
 
             ?>
             
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 mt-2">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="text-center">
